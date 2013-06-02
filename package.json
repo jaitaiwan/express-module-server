@@ -1,0 +1,10 @@
+{
+  "name":"express-module-server",
+  "version":"0.0.1a",
+  "dependencies":{
+    "module-server":"latest || https://github.com/jaitaiwan/module-server.git",
+    "underscore":"latest"
+  },
+  "readme":"README.md",
+  "license":"Apache 2.0"
+}
