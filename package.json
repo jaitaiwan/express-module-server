@@ -2,8 +2,12 @@
   "name":"express-module-server",
   "version":"0.0.1a",
   "dependencies":{
-    "module-server":"latest || https://github.com/jaitaiwan/module-server.git",
+    "module-server":"latest",
     "underscore":"latest"
+  },
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/jaitaiwan/express-module-server.git"
   },
   "readme":"README.md",
   "license":"Apache 2.0"
