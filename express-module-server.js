@@ -13,30 +13,47 @@ exports = function (options) {
   // Lets setup our options
   var setDefaults = require('underscore').defaults,
       defaults = {
-        path: "/_js/",
-        mapPath: "/_sourceMap/",
-        srcPath: "/_source/",
-        srcDir: "client/src",
-        srcMap: "/module-graph.json",
-        mapDir: "client/maps",
-        sourceMaps: true,
-        debug: false
+        path: "/_js/", // Path that concatenated js will be requested
+        mapPath: "/_sourceMap/", // Path for requesting source maps
+        srcPath: "/_source/",  // Path to get source js
+        srcDir: "client/src", // Local path of source scripts
+        srcMap: "/module-graph.json", // Local path of dependency layout
+        mapDir: "client/maps", // Local path of generated source maps
+        sourceMaps: true, // should we enable source mapping
+        debug: false, // should debugging be turned on
+        demo: false // enables serving of demo.html
       };
 
   // Make sure all the options are there
   setDefaults(options, defaults);
 
   return function (req, res, next) {
-    // Static Data Serv
-    // TODO: Statically return module-client.js and LABjs
-
     // Get our utility belt ready
     var Route = require('express/lib/router/route'),
         jsRoute = new Route('', options.path + "*:request"),
         mapRoute = new Route('', options.mapPath + "*:request"),
         sourceRoute = new Route('', options.srcPath + "*:request"),
         path = require('path');
+    
+    // Statically serve files
+    var moduleClientRoute = new Route('', options.srcPath + 'module-client.js'),
+        LABjsRoute = new Route('', options.srcPath + 'lab.js'),
+        demoRoute = new Route('', '/demo.html');
 
+    /**
+     * TODO: Serve static files
+    if(moduleClientRoute.match(req.path)) {
+      // Server module-client.js
+      return;
+    } else if (LABjsRoute.match(req.path)) {
+      // Serve Lab.js
+      return;
+    } else if (options.demo && demoRoute(req.path)) {
+      // Serve demo.html
+      // Make sure to dynamically generate demo paths | string replace
+      return;
+    }
+    */
 
     // Main grunt/worker function
     run = function (err, moduleServer) {
