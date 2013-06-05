@@ -37,4 +37,12 @@ Use
   app.listen(1337)
 ```
 
+To run the demo simply type the following in your commandline:
+```
+  sudo npm install -g express-module-server && express-module-server
+```
+
+And now open this link:
+[http://127.0.0.1:1337](http://127.0.0.1:1337)
+
 More documentation to come. (Above documentation assumes knowledge of module-server's demo-server.js)

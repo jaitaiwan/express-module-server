@@ -1,6 +1,6 @@
 {
   "name":"express-module-server",
-  "version":"0.0.1aa",
+  "version":"0.0.1",
   "dependencies":{
     "module-server":"latest",
     "underscore":"latest",
