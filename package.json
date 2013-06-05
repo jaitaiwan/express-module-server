@@ -3,11 +3,13 @@
   "version":"0.0.1aa",
   "dependencies":{
     "module-server":"latest",
-    "underscore":"latest"
+    "underscore":"latest",
+    "express":"latest"
   },
   "repository":{
     "type":"git",
     "url":"https://github.com/jaitaiwan/express-module-server.git"
   },
+  "bin":"bin.js",
   "license":"Apache 2.0"
 }

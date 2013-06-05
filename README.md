@@ -13,20 +13,22 @@ Use
   var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
-    express-module-server = require('express-module-server');
+    expressModuleServer = require('express-module-server');
 
-  app.configure 'development', ->
-      app.use(express-module-server({ 
-        path: "/_js/",  // requested module path
-        mapPath: "/_sourceMap/",  // requested source map path
-        srcPath: "/_source/", // request source js path
-        srcDir: "client/src", // js src directory
-        srcMap: "/module-graph.json", // js dependency file
-        mapDir: "client/maps", // map src directory
-        sourceMaps: true, // use source maps?
-        debug: false // are we debugging?
-    })
-  );
+  app.configure('development', function() {
+      app.use(expressModuleServer({ 
+        // Below are defaults provided by the module
+        path: "/_js/", // Path that concatenated js will be requested
+        mapPath: "/_sourceMap/", // Path for requesting source maps
+        srcPath: "/_source/",  // Path to get source js
+        srcDir: "client/src", // Local path of source scripts
+        srcMap: "/module-graph.json", // Local path of dependency layout
+        mapDir: "client/maps", // Local path of generated source maps
+        sourceMaps: true, // should we enable source mapping
+        debug: false, // should debugging be turned on
+        demo: false // enables serving of demo.html
+    }));
+  });
 
   app.get('/',function (req, res, next) {
     res.send(200, 'Hello World');
@@ -35,4 +37,4 @@ Use
   app.listen(1337)
 ```
 
-More dock to come. (Above dock assumes knowledge of module-server's demo-server.js)
+More documentation to come. (Above documentation assumes knowledge of module-server's demo-server.js)
